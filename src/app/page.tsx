@@ -37,6 +37,7 @@ export default function Home() {
     >
       {/* Connect Wallet Button */}
       <motion.button
+        className="connect-wallet-btn"
         whileHover={{ scale: 1.08, boxShadow: '0 0 16px #99e6ff' }}
         whileTap={{ scale: 0.97 }}
         initial={{ opacity: 0, y: -30 }}
@@ -160,6 +161,30 @@ export default function Home() {
         width: '100vw',
         maxWidth: '100vw',
       }}>
+      {/* Mobile X (Twitter) Button just above copy card */}
+      <div className="mobile-x-btn-container">
+        <button
+          className="mobile-x-btn"
+          style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            background: '#111',
+            border: '2px solid #FFD600',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 2px 12px #0006',
+            cursor: 'pointer',
+            margin: '0 auto 1rem auto',
+          }}
+          aria-label="X (Twitter)"
+        >
+          <svg width="18" height="18" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1199.61 0H944.726L599.805 494.09L255.274 0H0L462.726 630.545L0 1227H254.726L599.805 732.91L944.726 1227H1200L737.274 596.455L1199.61 0ZM299.726 111.818H399.726L599.805 393.818L799.726 111.818H899.726L599.805 555.818L299.726 111.818ZM899.726 1115.18H799.726L599.805 833.182L399.726 1115.18H299.726L599.805 671.182L899.726 1115.18Z" fill="#FFD600"/>
+          </svg>
+        </button>
+      </div>
         <div style={{
           background: 'rgba(0,0,0,0.7)',
           borderRadius: '1rem',
@@ -169,7 +194,9 @@ export default function Home() {
           boxShadow: '0 2px 12px #0006',
           maxWidth: '95vw',
           flexWrap: 'wrap',
-        }}>
+        }}
+        className="launching-soon-card"
+        >
           <span style={{
             color: '#FFD600',
             fontFamily: 'Poppins, Arial, Helvetica, sans-serif',
@@ -182,6 +209,7 @@ export default function Home() {
             Launching soon....
           </span>
           <button
+            className="launching-soon-btn"
             onClick={() => navigator.clipboard.writeText('Launching soon....')}
             style={{
               background: '#99e6ff',
@@ -201,61 +229,6 @@ export default function Home() {
             Copy
           </button>
         </div>
-      </div>
-      {/* Floating X (Twitter) Button with label */}
-      <div
-        className="floating-x-container"
-        style={{
-          position: 'fixed',
-          bottom: '2.2rem',
-          right: '2.2rem',
-          display: 'flex',
-          alignItems: 'center',
-          zIndex: 200,
-        }}>
-        <button
-          className="floating-x-btn"
-          style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '50%',
-            background: '#111',
-            border: '2px solid #FFD600',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 2px 12px #0006',
-            cursor: 'pointer',
-            transition: 'background 0.2s, box-shadow 0.2s',
-            marginLeft: '0.5rem',
-          }}
-          onMouseOver={e => { e.currentTarget.style.background = '#222'; }}
-          onMouseOut={e => { e.currentTarget.style.background = '#111'; }}
-          aria-label="X (Twitter)"
-        >
-          <svg width="28" height="28" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1199.61 0H944.726L599.805 494.09L255.274 0H0L462.726 630.545L0 1227H254.726L599.805 732.91L944.726 1227H1200L737.274 596.455L1199.61 0ZM299.726 111.818H399.726L599.805 393.818L799.726 111.818H899.726L599.805 555.818L299.726 111.818ZM899.726 1115.18H799.726L599.805 833.182L399.726 1115.18H299.726L599.805 671.182L899.726 1115.18Z" fill="#FFD600"/>
-          </svg>
-        </button>
-        <span
-          style={{
-            color: '#FFD600',
-            fontFamily: 'Poppins, Arial, Helvetica, sans-serif',
-            fontWeight: 700,
-            fontSize: '1.1rem',
-            marginRight: '0.7rem',
-            marginLeft: '0.7rem',
-            background: 'rgba(0,0,0,0.7)',
-            borderRadius: '0.6rem',
-            padding: '0.5rem 1.1rem',
-            boxShadow: '0 1px 4px #0002',
-            whiteSpace: 'nowrap',
-            display: 'inline-block',
-          }}
-          className="twitter-follow-label"
-        >
-          Follow us on Twitter
-        </span>
       </div>
       <div style={{
         background: 'rgba(0, 0, 0, 0.6)',

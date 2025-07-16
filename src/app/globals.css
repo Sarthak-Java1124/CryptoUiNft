@@ -127,8 +127,19 @@ body {
     text-align: center !important;
   }
   .floating-x-container {
-    right: 1rem !important;
-    bottom: 1rem !important;
+    display: none !important;
+  }
+  .mobile-x-btn-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100vw !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .mobile-x-btn {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 auto 1rem auto !important;
   }
   .floating-x-btn {
     width: 40px !important;
@@ -139,6 +150,24 @@ body {
     padding: 0.3rem 0.7rem !important;
     margin-left: 0.4rem !important;
     margin-right: 0.4rem !important;
+  }
+  .launching-soon-card {
+    padding: 0.6rem 1.1rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 0.7rem !important;
+    max-width: 90vw !important;
+  }
+  .launching-soon-btn {
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0.7rem !important;
+    border-radius: 0.4rem !important;
+  }
+  .connect-wallet-btn {
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0.7rem !important;
+    border-radius: 0.5rem !important;
+    top: 12px !important;
+    right: 12px !important;
   }
 }
 
