@@ -108,6 +108,15 @@ body {
   }
 }
 
+@keyframes backgroundMove {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
 @media (max-width: 600px) {
   .right-description-mobile {
     position: static !important;
@@ -168,6 +177,11 @@ body {
     border-radius: 0.5rem !important;
     top: 12px !important;
     right: 12px !important;
+  }
+  /* Ensure background animation works on mobile */
+  body > div:first-child {
+    background-size: 120% 100% !important;
+    animation: backgroundMove 15s linear infinite !important;
   }
 }
 

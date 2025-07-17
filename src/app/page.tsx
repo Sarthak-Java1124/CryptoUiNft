@@ -24,7 +24,7 @@ export default function Home() {
     <div
       style={{
         backgroundImage: 'url(/nft.jpg)',
-        backgroundSize: 'cover',
+        backgroundSize: '120% 100%',
         backgroundPosition: 'center',
         minHeight: '100vh',
         width: '100vw',
@@ -33,6 +33,7 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
+        animation: 'backgroundMove 15s linear infinite',
       }}
     >
       {/* Connect Wallet Button */}
@@ -65,11 +66,11 @@ export default function Home() {
       >
         CONNECT WALLET
       </motion.button>
-      <div style={{ position: 'absolute', top: 32, left: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 2, width: 'min(95vw, 600px)' }}>
+      <div style={{ position: 'absolute', top: 16, left: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 2, width: 'min(95vw, 600px)' }}>
         <motion.img
-          src="/batmaneyes.png"
+          src="/bonkLogo.png"
           alt="Batman Eyes"
-          style={{ width: '60vw', maxWidth: 360, height: 'auto', marginBottom: 60 }}
+          style={{ width: '40vw', maxWidth: 240, height: 'auto', marginBottom: 60 }}
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.3, duration: 1.2 }}
@@ -105,10 +106,10 @@ export default function Home() {
             animate={{ opacity: 1, y: [0, -10, 0, 10, 0] }}
             transition={{ duration: 1.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
           >
-            Lazy
+            Bonk
           </motion.span>
           <span style={{ color: '#fff', display: 'block', fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}>
-            Crypto Cats
+            Cats
           </span>
         </motion.span>
       </div>
@@ -145,8 +146,8 @@ export default function Home() {
         transition={{ type: 'spring', stiffness: 60, damping: 24, delay: 1.1, duration: 1.2 }}
       >
         {isMobile
-          ? `Lazy Cat is a unique NFT collection of 500 cats, each with its own style and story.\nJoin our community and own a piece of digital feline art!`
-          : `Lazy Cat is a unique NFT collection featuring 500 different cats, each with its own style, personality, and story.\nEvery NFT is a digital collectible living securely on the Ethereum blockchain, ensuring authenticity and ownership.\nJoin our vibrant community to trade, showcase, and connect with fellow cat enthusiasts.\nParticipate in exclusive events, unlock special rewards, and be part of the next big thing in digital art.\nOwn a piece of digital feline art today and let your Lazy Cat journey begin!`}
+          ? `Bonk Cat is a unique NFT collection of 500 cats, each with its own style and story.\nJoin our community and own a piece of digital feline art!`
+          : `Bonk Cat is a unique NFT collection featuring 500 different cats, each with its own style, personality, and story.\nEvery NFT is a digital collectible living securely on the Ethereum blockchain, ensuring authenticity and ownership.\nJoin our vibrant community to trade, showcase, and connect with fellow cat enthusiasts.\nParticipate in exclusive events, unlock special rewards, and be part of the next big thing in digital art.\nOwn a piece of digital feline art today and let your Bonk Cat journey begin!`}
       </motion.span>
       {/* Launching Soon Copy Card */}
       <div style={{
@@ -205,12 +206,27 @@ export default function Home() {
             marginRight: '1.5rem',
             letterSpacing: '0.04em',
             wordBreak: 'break-word',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
           }}>
-            Launching soon....
+            <svg width="24" height="24" viewBox="0 0 397.7 311.7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <linearGradient id="solanaGradient" gradientUnits="userSpaceOnUse" x1="360.8791" y1="351.5603" x2="141.213" y2="-88.4234" gradientTransform="matrix(1 0 0 -1 0 314)">
+                <stop offset="0" stopColor="#00FFA3"/>
+                <stop offset="1" stopColor="#DC1FFF"/>
+              </linearGradient>
+              <path fill="url(#solanaGradient)" d="M64.6,237.9c2.4-2.4,5.7-3.8,9.2-3.8h317.4c5.8,0,8.7,7,4.6,11.1l-62.7,62.7c-2.4,2.4-5.7,3.8-9.2,3.8H6.5
+                c-5.8,0-8.7-7-4.6-11.1L64.6,237.9z"/>
+              <path fill="url(#solanaGradient)" d="M64.6,3.8C67.1,1.4,70.4,0,73.8,0h317.4c5.8,0,8.7,7,4.6,11.1l-62.7,62.7c-2.4,2.4-5.7,3.8-9.2,3.8H6.5
+                c-5.8,0-8.7-7-4.6-11.1L64.6,3.8z"/>
+              <path fill="url(#solanaGradient)" d="M333.1,120.1c-2.4-2.4-5.7-3.8-9.2-3.8H6.5c-5.8,0-8.7,7-4.6,11.1l62.7,62.7c2.4,2.4,5.7,3.8,9.2,3.8h317.4
+                c5.8,0,8.7-7,4.6-11.1L333.1,120.1z"/>
+            </svg>
+            Launching on Solana
           </span>
           <button
             className="launching-soon-btn"
-            onClick={() => navigator.clipboard.writeText('Launching soon....')}
+            onClick={() => navigator.clipboard.writeText('Launching on Solana')}
             style={{
               background: '#99e6ff',
               color: '#111',
