@@ -1,5 +1,5 @@
 "use client"
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 
 // Add Orbitron font import to the head
@@ -20,12 +20,45 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // TV Flicker effect for text
+  function useFlickerAnimation() {
+    const controls = useAnimation();
+    useEffect(() => {
+      let timeout: NodeJS.Timeout;
+      const flicker = async () => {
+        while (true) {
+          // Flicker ON (blurred, low opacity)
+          await controls.start({
+            filter: 'blur(2.5px)',
+            opacity: 0.7,
+            transition: { duration: 0.04 }
+          });
+          // Flicker OFF (normal)
+          await controls.start({
+            filter: 'blur(0px)',
+            opacity: 1,
+            transition: { duration: 0.09 }
+          });
+          // Random delay before next flicker
+          await new Promise(res => {
+            timeout = setTimeout(res, 80 + Math.random() * 120);
+          });
+        }
+      };
+      flicker();
+      return () => clearTimeout(timeout);
+    }, [controls]);
+    return controls;
+  }
+  const bonkFlicker = useFlickerAnimation();
+  const catsFlicker = useFlickerAnimation();
+
   return (
     <div
       style={{
         backgroundImage: 'url(/nft.jpg)',
-        backgroundSize: '120% 100%',
-        backgroundPosition: 'center',
+        backgroundSize: '100% 120%',
+        backgroundPosition: '50% 0%',
         minHeight: '100vh',
         width: '100vw',
         display: 'flex',
@@ -68,50 +101,29 @@ export default function Home() {
       </motion.button>
       <div style={{ position: 'absolute', top: 16, left: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 2, width: 'min(95vw, 600px)' }}>
         <motion.img
-          src="/bonkLogo.png"
+          src="/3Cat.png"
           alt="Batman Eyes"
           style={{ width: '40vw', maxWidth: 240, height: 'auto', marginBottom: 60 }}
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.3, duration: 1.2 }}
         />
-        <motion.span
-          className="heading-large text-orange text-shadow"
-          style={{
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 700,
-            fontSize: undefined,
-            letterSpacing: undefined,
-            lineHeight: undefined,
-            textShadow: undefined,
-            textTransform: 'uppercase',
-            textAlign: 'center',
-            display: 'inline-block',
-          }}
-          initial={{ x: -120, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 60, damping: 24, delay: 0.7, duration: 1.2 }}
-        >
+        <div className="heading-large text-center text-shadow uppercase font-bold" style={{marginTop: '-2.2rem'}}>
           <motion.span
-            style={{
-              color: '#FFD600',
-              display: 'block',
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: 700,
-              textShadow: '0 0 8px #ff9900, 0 0 16px #ffe066',
-              filter: 'drop-shadow(0 0 6px #ff9900) drop-shadow(0 0 12px #ffe066)',
-              animation: 'flameGlowLight 1.6s infinite alternate',
-            }}
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: 1, y: [0, -10, 0, 10, 0] }}
-            transition={{ duration: 1.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            className="block text-[#FFD600] font-normal italic"
+            style={{ fontFamily: 'Poppins, sans-serif', fontSize: '4.2rem', marginBottom: '0.5rem' }}
+            animate={bonkFlicker}
           >
-            Bonk
+            $BONK$
           </motion.span>
-          <span style={{ color: '#fff', display: 'block', fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}>
+          <motion.span
+            className="block text-white font-normal"
+            style={{ fontFamily: 'Poppins, sans-serif', fontSize: '4.2rem', marginTop: '-1.2rem' }}
+            animate={catsFlicker}
+          >
             Cats
-          </span>
-        </motion.span>
+          </motion.span>
+        </div>
       </div>
       {/* Description at right extreme */}
       <motion.span
