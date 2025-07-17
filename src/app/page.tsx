@@ -110,14 +110,14 @@ export default function Home() {
         />
         <div className="heading-large text-center text-shadow uppercase font-bold" style={{marginTop: '-2.2rem'}}>
           <motion.span
-            className="block text-[#FFD600] font-normal italic"
+            className="block text-[#FFD600] font-normal italic flicker-text-mobile"
             style={{ fontFamily: 'Poppins, sans-serif', fontSize: '4.2rem', marginBottom: '0.5rem' }}
             animate={bonkFlicker}
           >
             $BONK$
           </motion.span>
           <motion.span
-            className="block text-white font-normal"
+            className="block text-white font-normal flicker-text-mobile"
             style={{ fontFamily: 'Poppins, sans-serif', fontSize: '4.2rem', marginTop: '-1.2rem' }}
             animate={catsFlicker}
           >
